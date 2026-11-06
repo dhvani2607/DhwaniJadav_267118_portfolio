@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Calculator | Frontend Practice Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <main class="calculator-wrapper">
+    <!-- Navigation Back Link -->
+    <div class="top-nav">
+      <a href="../../index.html#projects" class="back-link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span>Back to Portfolio</span>
+      </a>
+      <span class="project-pill">College Practice Project 1</span>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calculator-card">
+      <div class="card-header">
+        <div class="window-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h1 class="card-title">Interactive Calculator</h1>
+        <span class="badge">JavaScript DOM</span>
+      </div>
+
+      <!-- Display -->
+      <div class="calculator-display">
+        <div id="previous-operand" class="previous-operand" aria-live="polite"></div>
+        <div id="current-operand" class="current-operand" aria-live="polite">0</div>
+      </div>
+
+      <!-- Keypad -->
+      <div class="calculator-keypad">
+        <button type="button" class="btn btn-action" data-action="all-clear">AC</button>
+        <button type="button" class="btn btn-action" data-action="delete">⌫</button>
+        <button type="button" class="btn btn-action" data-action="percent">%</button>
+        <button type="button" class="btn btn-operator" data-operator="÷">÷</button>
+
+        <button type="button" class="btn btn-number" data-number="7">7</button>
+        <button type="button" class="btn btn-number" data-number="8">8</button>
+        <button type="button" class="btn btn-number" data-number="9">9</button>
+        <button type="button" class="btn btn-operator" data-operator="×">×</button>
+
+        <button type="button" class="btn btn-number" data-number="4">4</button>
+        <button type="button" class="btn btn-number" data-number="5">5</button>
+        <button type="button" class="btn btn-number" data-number="6">6</button>
+        <button type="button" class="btn btn-operator" data-operator="-">−</button>
+
+        <button type="button" class="btn btn-number" data-number="1">1</button>
+        <button type="button" class="btn btn-number" data-number="2">2</button>
+        <button type="button" class="btn btn-number" data-number="3">3</button>
+        <button type="button" class="btn btn-operator" data-operator="+">+</button>
+
+        <button type="button" class="btn btn-action" data-action="negate">±</button>
+        <button type="button" class="btn btn-number" data-number="0">0</button>
+        <button type="button" class="btn btn-number" data-number=".">.</button>
+        <button type="button" class="btn btn-equals" data-action="calculate">=</button>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="calculator-footer">
+        <p>Keyboard support enabled &bull; Built with HTML5, CSS3 &amp; Vanilla JS</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
