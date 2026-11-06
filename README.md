@@ -28,19 +28,6 @@ This website serves as both an authentic personal developer portfolio and a comp
 - **Prior Qualification:** Diploma in Information and Communication Technology (ICT), Government Polytechnic for Girls, Ahmedabad
 - **Career Interests:** Cybersecurity, Cloud Security, Artificial Intelligence, and Web Development
 
----
-
-## 🎯 College Assessment Requirements Checklist
-
-This project is tailored specifically to satisfy all criteria outlined in the **Web Technology Internal Assessment**:
-
-| Criteria | Marks | Requirement Details | Status |
-|---|---|---|---|
-| **HTML** | **2.5** | Home, About Me, Skills, Projects with at least TWO working examples, Contact, semantic tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`), validated contact form | **Completed (100%)** |
-| **CSS** | **3.0** | Separate `style.css` file, element selectors, class selectors, ID selectors, hover effects, multi-screen responsiveness, CSS media queries | **Completed (100%)** |
-| **JavaScript** | **2.5** | Separate `script.js` file, at least TWO working interactive features, event handling, frontend form validation | **Completed (100%)** |
-| **GitHub** | **2.5** | Professional `README.md`, project description, technologies used, screenshot, clean folder structure, 5+ meaningful git commits | **Completed (100%)** |
-| **Originality & Neatness** | **1.5** | 100% original, personalized with real educational milestones and career goals, non-template design | **Completed (100%)** |
 
 ---
 
