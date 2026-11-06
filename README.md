@@ -129,3 +129,4 @@ http://localhost:5500
 
 Designed and developed by **Dhwani Jadav** for the **Web Technology Internal Assessment**.  
 Distributed under the **MIT License**. Free for educational and learning purposes.
+
