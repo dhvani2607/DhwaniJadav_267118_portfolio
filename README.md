@@ -17,7 +17,7 @@ A modern, responsive, and visually impressive personal portfolio website built f
 
 ---
 
-## 📌 Project Overview
+## 🛠️ Project Overview
 
 This website serves as both an authentic personal developer portfolio and a comprehensive demonstration of core front-end web technologies. It showcases an ambitious, futuristic cyber aesthetic with a dark navy background, vibrant purple/blue accents, subtle glassmorphism, responsive layouts, and interactive JavaScript features.
 
@@ -80,7 +80,7 @@ Web tech project portfolio/
 
 ---
 
-## 🚀 How to Run the Website Locally
+## 🛠️ How to Run the Website Locally
 
 You can preview and run the project using any of the following methods:
 
