@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tagsHtml = tagsArray.map(tag => `<span class="tech-tag">${escapeHtml(tag)}</span>`).join('');
 
-    const repoLink = project.repoUrl || 'https://github.com/dhwanijadav';
+    const repoLink = project.repoUrl || 'https://github.com/dhvani2607';
     const liveHtml = project.liveUrl 
       ? `<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="Live Demo">
            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

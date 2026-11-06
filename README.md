@@ -107,8 +107,8 @@ http://localhost:5500
 
 ## 🔗 Public GitHub Repository
 
-- **Repository URL:** [https://github.com/dhwanijadav/web-tech-portfolio](https://github.com/dhwanijadav/web-tech-portfolio) *(Replace with your actual public repository URL upon upload)*
-- **Live Demo / GitHub Pages:** [https://dhwanijadav.github.io/web-tech-portfolio](https://dhwanijadav.github.io/web-tech-portfolio)
+- **Repository URL:** [https://github.com/dhvani2607/web-tech-portfolio](https://github.com/dhvani2607/web-tech-portfolio)
+- **Live Demo / GitHub Pages:** [https://dhvani2607.github.io/web-tech-portfolio](https://dhvani2607.github.io/web-tech-portfolio)
 
 ---
 
