@@ -385,6 +385,239 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --------------------------------------------------------------------------
+  // 9. Add New Project Modal & Dynamic Card Creation
+  // --------------------------------------------------------------------------
+  const openModalBtn = document.getElementById('open-add-project-modal');
+  const projectModal = document.getElementById('project-modal');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  const cancelModalBtn = document.getElementById('cancel-modal-btn');
+  const addProjectForm = document.getElementById('add-project-form');
+  const projectsGrid = document.querySelector('.projects-grid');
+
+  const titleInput = document.getElementById('project-modal-title');
+  const categoryInput = document.getElementById('project-modal-category');
+  const descInput = document.getElementById('project-modal-desc');
+  const techInput = document.getElementById('project-modal-tech');
+  const repoInput = document.getElementById('project-modal-repo');
+  const liveInput = document.getElementById('project-modal-live');
+
+  // Open modal
+  const openModal = () => {
+    if (!projectModal) return;
+    projectModal.classList.add('active');
+    projectModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    titleInput?.focus();
+  };
+
+  // Close modal
+  const closeModal = () => {
+    if (!projectModal) return;
+    projectModal.classList.remove('active');
+    projectModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    addProjectForm?.reset();
+    document.querySelectorAll('#add-project-form .form-control.invalid').forEach(el => el.classList.remove('invalid'));
+  };
+
+  openModalBtn?.addEventListener('click', openModal);
+  openModalBtn?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  closeModalBtn?.addEventListener('click', closeModal);
+  cancelModalBtn?.addEventListener('click', closeModal);
+
+  // Close on outside click
+  projectModal?.addEventListener('click', (e) => {
+    if (e.target === projectModal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && projectModal?.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Storage Key
+  const CUSTOM_PROJECTS_KEY = 'dhwani_custom_portfolio_projects';
+
+  const loadCustomProjects = () => {
+    try {
+      const data = localStorage.getItem(CUSTOM_PROJECTS_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      console.warn('LocalStorage unavailable for custom projects:', e);
+      return [];
+    }
+  };
+
+  const saveCustomProjects = (projects) => {
+    try {
+      localStorage.setItem(CUSTOM_PROJECTS_KEY, JSON.stringify(projects));
+    } catch (e) {
+      console.warn('Failed saving custom projects:', e);
+    }
+  };
+
+  // Create Project Card Element
+  const createProjectCardElement = (project, isNew = false) => {
+    const article = document.createElement('article');
+    article.className = `project-card ${isNew ? 'newly-added' : ''}`;
+    article.setAttribute('data-custom-id', project.id);
+
+    const tagsArray = project.technologies 
+      ? project.technologies.split(',').map(t => t.trim()).filter(Boolean)
+      : ['Web Tech'];
+
+    const tagsHtml = tagsArray.map(tag => `<span class="tech-tag">${escapeHtml(tag)}</span>`).join('');
+
+    const repoLink = project.repoUrl || 'https://github.com/dhwanijadav';
+    const liveHtml = project.liveUrl 
+      ? `<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="Live Demo">
+           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+             <polyline points="15 3 21 3 21 9"></polyline>
+             <line x1="10" y1="14" x2="21" y2="3"></line>
+           </svg>
+           <span>Live Demo</span>
+         </a>`
+      : '';
+
+    article.innerHTML = `
+      <div>
+        <div class="project-top">
+          <div class="project-folder-icon" title="Project">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <span class="project-type-badge">${escapeHtml(project.category || 'Custom Project')}</span>
+        </div>
+
+        <h3 class="project-title">${escapeHtml(project.title)}</h3>
+        <p class="project-desc">${escapeHtml(project.description)}</p>
+
+        <div class="project-tech-tags">
+          ${tagsHtml}
+        </div>
+      </div>
+
+      <div class="project-links">
+        ${liveHtml}
+        <a href="${escapeHtml(repoLink)}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="Source Code">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          <span>Source Code</span>
+        </a>
+        <button type="button" class="btn-delete-project" title="Delete custom project" style="margin-left: auto; background: none; border: none; color: #ef4444; opacity: 0.6; cursor: pointer; padding: 4px;" aria-label="Delete project">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        </button>
+      </div>
+    `;
+
+    // Delete handler
+    const deleteBtn = article.querySelector('.btn-delete-project');
+    deleteBtn?.addEventListener('click', () => {
+      if (confirm(`Remove custom project "${project.title}"?`)) {
+        article.remove();
+        const currentProjects = loadCustomProjects().filter(p => p.id !== project.id);
+        saveCustomProjects(currentProjects);
+      }
+    });
+
+    return article;
+  };
+
+  // Render stored custom projects on load
+  const initialCustomProjects = loadCustomProjects();
+  initialCustomProjects.forEach(project => {
+    const card = createProjectCardElement(project, false);
+    if (openModalBtn) {
+      projectsGrid?.insertBefore(card, openModalBtn);
+    }
+  });
+
+  // Handle Form Submit
+  addProjectForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const titleVal = titleInput?.value.trim() || '';
+    const descVal = descInput?.value.trim() || '';
+    const catVal = categoryInput?.value || 'Custom Project';
+    const techVal = techInput?.value.trim() || '';
+    const repoVal = repoInput?.value.trim() || '';
+    const liveVal = liveInput?.value.trim() || '';
+
+    let isValid = true;
+
+    if (titleVal.length < 2) {
+      titleInput?.classList.add('invalid');
+      isValid = false;
+    } else {
+      titleInput?.classList.remove('invalid');
+    }
+
+    if (descVal.length < 10) {
+      descInput?.classList.add('invalid');
+      isValid = false;
+    } else {
+      descInput?.classList.remove('invalid');
+    }
+
+    if (!isValid) return;
+
+    const newProject = {
+      id: Date.now(),
+      title: titleVal,
+      category: catVal,
+      description: descVal,
+      technologies: techVal,
+      repoUrl: repoVal,
+      liveUrl: liveVal
+    };
+
+    // Save
+    const stored = loadCustomProjects();
+    stored.push(newProject);
+    saveCustomProjects(stored);
+
+    // Insert to DOM
+    const cardEl = createProjectCardElement(newProject, true);
+    if (openModalBtn) {
+      projectsGrid?.insertBefore(cardEl, openModalBtn);
+    }
+
+    closeModal();
+
+    // Scroll to newly added card
+    cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Clear modal errors on input
+  titleInput?.addEventListener('input', () => {
+    if (titleInput.value.trim().length >= 2) {
+      titleInput.classList.remove('invalid');
+    }
+  });
+
+  descInput?.addEventListener('input', () => {
+    if (descInput.value.trim().length >= 10) {
+      descInput.classList.remove('invalid');
+    }
+  });
+
   // Utility to prevent XSS in feedback rendering
   function escapeHtml(string) {
     const entityMap = {

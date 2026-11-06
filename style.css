@@ -1333,11 +1333,20 @@ button {
   justify-content: center;
   text-align: center;
   padding: 36px 28px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .project-template-card:hover {
   border-color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.04);
+  background: rgba(56, 189, 248, 0.06);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), var(--glow-sm);
+}
+
+.project-template-card:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
 }
 
 .add-icon-circle {
@@ -1358,6 +1367,121 @@ button {
   transform: rotate(90deg) scale(1.1);
   color: var(--accent-cyan);
   border-color: var(--accent-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   Add New Project Modal Dialog
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 10, 19, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: rgba(13, 18, 34, 0.96);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), var(--glow-md);
+  transform: translateY(20px) scale(0.96);
+  transition: transform var(--transition-normal);
+  position: relative;
+}
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.modal-form .form-group {
+  margin-bottom: 18px;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Newly added card highlight animation */
+@keyframes highlightNewCard {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+    border-color: var(--accent-cyan);
+  }
+  50% {
+    box-shadow: 0 0 30px 4px rgba(56, 189, 248, 0.5);
+    border-color: var(--accent-cyan);
+  }
+  100% {
+    box-shadow: var(--shadow-card);
+    border-color: var(--border-subtle);
+  }
+}
+
+.project-card.newly-added {
+  animation: highlightNewCard 3s ease-out;
 }
 
 /* --------------------------------------------------------------------------

@@ -1040,8 +1040,8 @@
                         </div>
                     </article>
 
-                    <!-- Card 7: Easy "Add Your Project" Template Placeholder -->
-                    <div class="project-card project-template-card">
+                    <!-- Card 7: Easy "Add Your Project" Template Card & Modal Trigger -->
+                    <div id="open-add-project-modal" class="project-card project-template-card" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Add New Project to Portfolio">
                         <div class="add-icon-circle">
                             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -1051,11 +1051,11 @@
                         </div>
                         <h3 class="project-title" style="margin-bottom: 8px;">Add New Project</h3>
                         <p class="project-desc" style="max-width: 280px; margin-bottom: 16px;">
-                            Easily expand this section as you build new course projects, AI experiments, or cybersecurity labs.
+                            Click to add a custom project with a title, description, category, and repository links.
                         </p>
                         <span class="tech-tag"
                             style="color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">
-                            Editable HTML Template Ready
+                            + Click to Add Project
                         </span>
                     </div>
 
@@ -1407,6 +1407,75 @@
             </div>
         </div>
     </footer>
+
+    <!-- Add New Project Modal Dialog -->
+    <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="window-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h3 id="modal-title" class="modal-title">Add New Project</h3>
+                </div>
+                <button type="button" id="close-modal-btn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
+            </div>
+
+            <form id="add-project-form" class="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="project-modal-title" class="form-label">Project Title *</label>
+                    <input type="text" id="project-modal-title" class="form-control" placeholder="e.g. Cloud Security Auditor" required>
+                    <div class="form-error-msg">Please enter a project title (at least 2 characters).</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="project-modal-category" class="form-label">Category / Badge</label>
+                    <select id="project-modal-category" class="form-control">
+                        <option value="Web Application">Web Application</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="AI & Machine Learning">AI &amp; Machine Learning</option>
+                        <option value="Python Project">Python Project</option>
+                        <option value="IoT & Robotics">IoT &amp; Robotics</option>
+                        <option value="Academic Lab">Academic Lab</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="project-modal-desc" class="form-label">Project Description *</label>
+                    <textarea id="project-modal-desc" class="form-control" rows="3" placeholder="Briefly describe what your project does, its goals, and architecture..." required></textarea>
+                    <div class="form-error-msg">Please write a short description (at least 10 characters).</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="project-modal-tech" class="form-label">Technologies (comma separated)</label>
+                    <input type="text" id="project-modal-tech" class="form-control" placeholder="e.g. Python, Flask, Docker, Sockets">
+                </div>
+
+                <div class="form-group">
+                    <label for="project-modal-repo" class="form-label">Source Code / GitHub URL</label>
+                    <input type="url" id="project-modal-repo" class="form-control" placeholder="https://github.com/dhwanijadav/project-name">
+                </div>
+
+                <div class="form-group">
+                    <label for="project-modal-live" class="form-label">Live Demo / View URL (Optional)</label>
+                    <input type="url" id="project-modal-live" class="form-control" placeholder="https://your-demo-link.com">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancel-modal-btn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Add Project</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Back to Top Floating Button -->
     <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
