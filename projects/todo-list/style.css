@@ -1,22 +1,21 @@
 /* ==========================================================================
    TaskMate / To-Do List Stylesheet
-   Matches Dhwani Jadav's Cyber & Dark Navy Portfolio Aesthetic
+   Design Direction: Dusty Plum — Rose Gold (Editorial Refined Glass)
    ========================================================================== */
 
 :root {
-  --bg-primary: #070a13;
-  --bg-secondary: #0d1222;
-  --bg-card: rgba(17, 24, 43, 0.85);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(139, 92, 246, 0.35);
-  --accent-purple: #8b5cf6;
-  --accent-violet: #a78bfa;
-  --accent-blue: #3b82f6;
-  --accent-cyan: #38bdf8;
-  --accent-emerald: #10b981;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --bg-primary: #19151B;
+  --bg-surface: #302632;
+  --bg-card: rgba(48, 38, 50, 0.74);
+  --border-subtle: rgba(214, 180, 157, 0.14);
+  --border-accent: rgba(184, 135, 131, 0.38);
+  --accent-mauve: #765B70;
+  --accent-dusty-rose: #B88783;
+  --accent-rose-gold: #D6B49D;
+  --text-main: #F4ECE8;
+  --text-muted: #CFC0BA;
+  --text-dim: #9A8892;
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', Consolas, monospace;
 }
@@ -40,13 +39,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Ambient Glow */
+/* Soft Atmospheric Silk Bloom */
 .ambient-glow {
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.18), transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.15), transparent 45%);
+    radial-gradient(circle at 15% 15%, rgba(118, 91, 112, 0.24), transparent 48%),
+    radial-gradient(circle at 85% 85%, rgba(214, 180, 157, 0.14), transparent 48%);
   pointer-events: none;
   z-index: 0;
 }
@@ -55,7 +54,7 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 580px;
+  max-width: 590px;
 }
 
 /* Top Nav */
@@ -70,30 +69,31 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--accent-cyan);
+  color: var(--accent-rose-gold);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 15px;
+  background: rgba(48, 38, 50, 0.65);
   border: 1px solid var(--border-subtle);
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .back-link:hover {
-  background: rgba(56, 189, 248, 0.12);
-  border-color: var(--accent-cyan);
+  background: var(--accent-rose-gold);
+  border-color: var(--accent-rose-gold);
+  color: #19151B;
   transform: translateX(-3px);
 }
 
 .project-pill {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-family: var(--font-mono);
-  color: var(--accent-violet);
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  padding: 4px 12px;
+  color: var(--accent-rose-gold);
+  background: rgba(118, 91, 112, 0.26);
+  border: 1px solid var(--border-subtle);
+  padding: 5px 12px;
   border-radius: 9999px;
 }
 
@@ -101,10 +101,10 @@ body {
 .todo-card {
   background: var(--bg-card);
   border: 1px solid var(--border-accent);
-  border-radius: 20px;
-  padding: 28px;
+  border-radius: 22px;
+  padding: 30px;
   backdrop-filter: blur(20px);
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 22px 48px -16px rgba(9, 6, 11, 0.76);
 }
 
 .card-header {
@@ -123,37 +123,39 @@ body {
 }
 
 .logo-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: rgba(139, 92, 246, 0.15);
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: rgba(25, 21, 27, 0.65);
   border: 1px solid var(--border-accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-violet);
+  color: var(--accent-rose-gold);
 }
 
 .card-title {
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--text-main);
   line-height: 1.2;
 }
 
 .card-subtitle {
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   color: var(--text-muted);
+  margin-top: 2px;
 }
 
 .badge {
   font-size: 0.72rem;
   font-family: var(--font-mono);
-  padding: 4px 10px;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: var(--accent-cyan);
-  border-radius: 6px;
+  padding: 4px 11px;
+  background: rgba(25, 21, 27, 0.6);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-dusty-rose);
+  border-radius: 9999px;
 }
 
 /* Input Form */
@@ -169,24 +171,24 @@ body {
 .task-input {
   flex-grow: 1;
   padding: 12px 16px;
-  background: rgba(7, 10, 19, 0.85);
+  background: rgba(25, 21, 27, 0.75);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   color: var(--text-main);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   transition: all 0.2s ease;
 }
 
 .task-input:focus {
   outline: none;
-  border-color: var(--accent-violet);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+  border-color: var(--accent-rose-gold);
+  box-shadow: 0 0 0 3px rgba(214, 180, 157, 0.16);
 }
 
 .priority-select {
   padding: 12px 14px;
-  background: rgba(7, 10, 19, 0.85);
+  background: rgba(25, 21, 27, 0.75);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   color: var(--text-main);
@@ -197,35 +199,35 @@ body {
 
 .priority-select:focus {
   outline: none;
-  border-color: var(--accent-violet);
+  border-color: var(--accent-rose-gold);
 }
 
 .btn-add {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
-  border: none;
-  border-radius: 12px;
-  color: #ffffff;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #D6B49D 0%, #B88783 100%);
+  border: 1px solid rgba(244, 236, 232, 0.28);
+  border-radius: 9999px;
+  color: #19151B;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px -4px rgba(214, 180, 157, 0.38);
+  transition: all 0.22s ease;
   white-space: nowrap;
 }
 
 .btn-add:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
+  box-shadow: 0 10px 24px -4px rgba(214, 180, 157, 0.52);
 }
 
 .input-error-msg {
   font-size: 0.8rem;
-  color: #ef4444;
+  color: #dfa09b;
   margin-top: 6px;
   display: none;
 }
@@ -252,11 +254,11 @@ body {
 }
 
 .filter-tab {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(25, 21, 27, 0.45);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   padding: 6px 14px;
-  border-radius: 8px;
+  border-radius: 9999px;
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
@@ -265,13 +267,13 @@ body {
 
 .filter-tab:hover {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(118, 91, 112, 0.25);
 }
 
 .filter-tab.active {
-  background: rgba(139, 92, 246, 0.2);
-  border-color: var(--accent-violet);
-  color: var(--accent-violet);
+  background: rgba(214, 180, 157, 0.18);
+  border-color: var(--accent-rose-gold);
+  color: var(--accent-rose-gold);
 }
 
 .task-stats {
@@ -296,10 +298,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  background: rgba(7, 10, 19, 0.6);
+  padding: 13px 16px;
+  background: rgba(25, 21, 27, 0.55);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  border-radius: 14px;
   transition: all 0.2s ease;
   animation: fadeIn 0.25s ease-out;
 }
@@ -310,13 +312,13 @@ body {
 }
 
 .todo-item:hover {
-  background: rgba(13, 18, 34, 0.8);
-  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(48, 38, 50, 0.72);
+  border-color: var(--border-accent);
 }
 
 .todo-item.completed {
   opacity: 0.65;
-  background: rgba(7, 10, 19, 0.35);
+  background: rgba(25, 21, 27, 0.34);
 }
 
 .todo-left {
@@ -331,7 +333,7 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 6px;
-  border: 2px solid var(--border-accent);
+  border: 1.8px solid var(--border-accent);
   background: transparent;
   cursor: pointer;
   display: flex;
@@ -342,14 +344,14 @@ body {
 }
 
 .todo-item.completed .custom-checkbox {
-  background: var(--accent-emerald);
-  border-color: var(--accent-emerald);
+  background: var(--accent-rose-gold);
+  border-color: var(--accent-rose-gold);
 }
 
 .custom-checkbox svg {
   width: 14px;
   height: 14px;
-  color: #ffffff;
+  color: #19151B;
   display: none;
 }
 
@@ -358,7 +360,7 @@ body {
 }
 
 .todo-text {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   color: var(--text-main);
   word-break: break-word;
   transition: all 0.2s ease;
@@ -372,27 +374,27 @@ body {
 .todo-tag {
   font-size: 0.72rem;
   font-family: var(--font-mono);
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 2px 9px;
+  border-radius: 9999px;
   margin-left: 8px;
   flex-shrink: 0;
 }
 
 .tag-normal {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(244, 236, 232, 0.06);
   color: var(--text-muted);
 }
 
 .tag-study {
-  background: rgba(56, 189, 248, 0.12);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(118, 91, 112, 0.28);
+  color: var(--accent-rose-gold);
+  border: 1px solid rgba(214, 180, 157, 0.24);
 }
 
 .tag-urgent {
-  background: rgba(244, 63, 94, 0.12);
-  color: #f43f5e;
-  border: 1px solid rgba(244, 63, 94, 0.25);
+  background: rgba(184, 135, 131, 0.2);
+  color: var(--accent-dusty-rose);
+  border: 1px solid rgba(184, 135, 131, 0.42);
 }
 
 .todo-right {
@@ -416,8 +418,8 @@ body {
 }
 
 .btn-delete:hover {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-dusty-rose);
+  background: rgba(184, 135, 131, 0.16);
 }
 
 /* Empty State */
@@ -437,8 +439,8 @@ body {
 }
 
 .empty-state svg {
-  color: var(--accent-violet);
-  opacity: 0.7;
+  color: var(--accent-rose-gold);
+  opacity: 0.75;
 }
 
 .empty-state p {
@@ -467,7 +469,7 @@ body {
 }
 
 .btn-clear-completed:hover {
-  color: var(--accent-violet);
+  color: var(--accent-rose-gold);
   text-decoration: underline;
 }
 
@@ -496,4 +498,3 @@ body {
     align-items: flex-start;
   }
 }
-

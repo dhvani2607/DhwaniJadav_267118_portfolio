@@ -166,7 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         this.vx = (Math.random() - 0.5) * 0.7;
         this.vy = (Math.random() - 0.5) * 0.7;
         this.radius = Math.random() * 2 + 1;
-        this.color = Math.random() > 0.5 ? 'rgba(139, 92, 246, ' : 'rgba(56, 189, 248, ';
+        const rand = Math.random();
+        this.color = rand > 0.6 ? 'rgba(214, 180, 157, ' : (rand > 0.25 ? 'rgba(184, 135, 131, ' : 'rgba(118, 91, 112, ');
       }
 
       update() {
@@ -216,9 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.25;
+            const opacity = (1 - distance / maxDistance) * 0.16;
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`;
+            ctx.strokeStyle = `rgba(214, 180, 157, ${opacity})`;
             ctx.lineWidth = 1;
             ctx.moveTo(particles[a].x, particles[a].y);
             ctx.lineTo(particles[b].x, particles[b].y);
@@ -518,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </svg>
           <span>Source Code</span>
         </a>
-        <button type="button" class="btn-delete-project" title="Delete custom project" style="margin-left: auto; background: none; border: none; color: #ef4444; opacity: 0.6; cursor: pointer; padding: 4px;" aria-label="Delete project">
+        <button type="button" class="btn-delete-project" title="Delete custom project" style="margin-left: auto; background: none; border: none; color: #d48984; opacity: 0.78; cursor: pointer; padding: 4px;" aria-label="Delete project">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="3 6 5 6 21 6"></polyline>
             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
